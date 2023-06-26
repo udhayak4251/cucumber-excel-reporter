@@ -93,8 +93,6 @@ const GenerateExcelReport = ({
     //add set of scenario status to all scenarios set
     allRows.push(...scenarioWiseRows);
   }
-
-  console.log(allRows);
   
   /* generate worksheet and workbook */
   const worksheet = utils.json_to_sheet(allRows);
