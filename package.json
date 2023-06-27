@@ -1,6 +1,6 @@
 {
   "name": "cucumber-excel-reporter",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Generate cucumber excel reports",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

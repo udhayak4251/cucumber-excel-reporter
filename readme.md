@@ -3,7 +3,7 @@
 Generate cucumber excel reports from cucumber json reports
 
 
-## Framework
+## Library
 
 * XLSX
 
@@ -26,6 +26,7 @@ Install all the packages of this project by following command.
 
 
 ## Usage
+## Simple
 ```bash
 import { GenerateExcelReport } from "cucumber-excel-reporter";
 
@@ -37,7 +38,19 @@ GenerateExcelReport({
     fileName: "Cucumber_excel_report"
 })
 ```
+## With Steps
+```bash
+import { GenerateExcelReport } from "cucumber-excel-reporter";
 
+GenerateExcelReport({
+    cucumberJsonPaths: [
+        'reports/cucumber.json'
+    ],
+    cucumberExcelReportOutDir: "excel_reports",
+    fileName: "Cucumber_excel_report",
+    includeSteps:true
+})
+```
 
 ## Feedback/Support
 
