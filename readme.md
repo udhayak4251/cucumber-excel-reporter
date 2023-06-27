@@ -52,6 +52,12 @@ GenerateExcelReport({
 })
 ```
 
+## Screenshots without steps
+![Alt text](/examples/cucumberexcelreport.png?raw=true "Cucumber Excel Report")
+
+## Screenshots with steps
+![Alt text](/examples/cucumberexcelreportwithsteps.png?raw=true "Cucumber Excel Report with steps")
+
 ## Feedback/Support
 
 For support and Feedback, email udhayak4251@gmail.com
