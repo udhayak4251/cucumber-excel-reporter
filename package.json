@@ -1,12 +1,11 @@
 {
   "name": "cucumber-excel-reporter",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Generate cucumber excel reports",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "author": "Udhaya Kumar Kothandaraman",
   "repository": {

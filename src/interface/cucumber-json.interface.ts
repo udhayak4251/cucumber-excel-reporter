@@ -45,6 +45,7 @@ export interface Row {
 export interface Result {
   status: string
   duration: number
+  error_message?:string
 }
 
 export interface Match {

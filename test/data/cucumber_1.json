@@ -105,7 +105,8 @@
             "name": "this feature runs with background",
             "result": {
               "status": "failed",
-              "duration": 88168
+              "duration": 88168,
+              "error_message": "Error in assertion"
             },
             "line": 8,
             "match": {

@@ -6,7 +6,9 @@ type GenerateExcelReportProps = {
   cucumberJsonPaths: string[];
   cucumberExcelReportOutDir: string;
   fileName: string,
-  includeSteps?: boolean
+  includeSteps?: boolean,
+  includeLogs?:boolean,
+  includeJsonPath?:boolean
 };
 
 enum ResultEnum {
@@ -38,7 +40,9 @@ const GenerateExcelReport = ({
   cucumberJsonPaths,
   cucumberExcelReportOutDir,
   fileName,
-  includeSteps
+  includeSteps,
+  includeLogs,
+  includeJsonPath
 }: GenerateExcelReportProps) => {
   let allRows = [];
   for (let i = 0; i < cucumberJsonPaths.length; i++) {
@@ -62,10 +66,12 @@ const GenerateExcelReport = ({
             stepName: `${step.keyword}${step.name}`,
             id: element.id,
             status: step.result.status,
+            logs: step.result.error_message
           });
         });
       });
     });
+    
     //find unique ids
     const findUniqueScenarioIds = Array.from(new Set(
       rows.map((data) => data.internalTrackId)
@@ -91,13 +97,30 @@ const GenerateExcelReport = ({
           scenario.status = "unknown";
         }
         const { featureId, id, internalTrackId, ...filterScenario } = scenario;
-        const filteredScenario = {
-          sNo: index + 1,
-          tags:filterScenario.tags,
-          feature: filterScenario.feature,
-          scenarioName: filterScenario.scenarioName,
-          stepName: '',
-          status: filterScenario.status
+        let filteredScenario:any = {};
+        if(includeLogs) {
+          filteredScenario = {
+            sNo: index + 1,
+            tags:filterScenario.tags,
+            feature: filterScenario.feature,
+            scenarioName: filterScenario.scenarioName,
+            stepName: '',
+            status: filterScenario.status,
+            Logs: ''
+          }
+        } else {
+          filteredScenario ={
+            sNo: index + 1,
+            tags:filterScenario.tags,
+            feature: filterScenario.feature,
+            scenarioName: filterScenario.scenarioName,
+            stepName: '',
+            status: filterScenario.status
+          }
+        }
+
+        if(includeJsonPath) {
+          filteredScenario.Source = cucumberJsonPath
         }
         
         stepsFormedData.push(filteredScenario);
@@ -105,17 +128,35 @@ const GenerateExcelReport = ({
         let scenarioSteps = rows.filter((scenario) => scenario.internalTrackId == uniqueId && !scenario.hooks.includes('Before'));
         scenarioSteps.forEach(step => {
           const { internalTrackId, featureId, id, feature, scenarioName, tags, ...rest } = step;
-          const onlyStep = {
-            sNo: '',
-            feature: '',
-            scenarioName: '',
-            tags: '',
-            stepName: rest.stepName,
-            status: rest.status
+         
+          let onlyStep:any = {};
+          if(includeLogs) {
+              onlyStep = {
+                sNo: '',
+                feature: '',
+                scenarioName: '',
+                tags: '',
+                stepName: rest.stepName,
+                status: rest.status,
+                Logs: rest.logs,
+              }
+          } else {
+            onlyStep = {
+              sNo: '',
+              feature: '',
+              scenarioName: '',
+              tags: '',
+              stepName: rest.stepName,
+              status: rest.status
+            }
+          }
+          if(includeJsonPath) {
+            onlyStep.Source = cucumberJsonPath
           }
           stepsFormedData.push(onlyStep);
         })
         scenarioWiseRows.push(...stepsFormedData);
+        
 
       } else {
         let scenario = rows.find((scenario) => scenario.internalTrackId == uniqueId);

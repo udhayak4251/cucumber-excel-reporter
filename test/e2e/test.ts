@@ -4,5 +4,7 @@ GenerateExcelReport({
     cucumberJsonPaths: ["test/data/cucumber_1.json"],
     cucumberExcelReportOutDir: "cucumber_excel_report",
     fileName: 'Cucumber_Excel_report',
-    includeSteps:true
+    includeSteps:true,
+    includeLogs: true,
+    includeJsonPath: true
 })
