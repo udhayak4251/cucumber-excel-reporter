@@ -1,6 +1,6 @@
 {
   "name": "cucumber-excel-reporter",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "Generate cucumber excel reports",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -14,10 +14,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.21",
     "typescript": "^5.1.3",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.3.1"
   }
 }

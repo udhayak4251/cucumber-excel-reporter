@@ -77,6 +77,18 @@
           {
             "name": "@testPassing",
             "line": 10
+          },
+          {
+            "name": "@LifePan",
+            "line": 10
+          },
+          {
+            "name": "@983989",
+            "line": 10
+          },
+          {
+            "name": "@BeYou",
+            "line": 10
           }
         ],
         "type": "scenario"
@@ -669,7 +681,7 @@
             "keyword": "When ",
             "name": "he has the JSON cucumber formatted file at the end of run",
             "result": {
-              "status": "passed",
+              "status": "failed",
               "duration": 1707164
             },
             "line": 65,
